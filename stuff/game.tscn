@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfrlgcqejgv4a"]
+
+[ext_resource type="Script" path="res://code/game.cs" id="1_m1spv"]
+[ext_resource type="PackedScene" uid="uid://dcnauyqqglbyh" path="res://stuff/Dicetraybutton.tscn" id="1_ryux4"]
+[ext_resource type="PackedScene" uid="uid://dintj2ikeoovx" path="res://stuff/Resources.tscn" id="3_7rl82"]
+[ext_resource type="PackedScene" uid="uid://bea24fptvy3qt" path="res://stuff/CardGoldMine.tscn" id="4_aeln0"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m1spv")
+
+[node name="Dicetraybutton" parent="." instance=ExtResource("1_ryux4")]
+layout_mode = 1
+offset_left = 414.0
+offset_top = 297.0
+offset_right = -468.0
+offset_bottom = -226.0
+
+[node name="Gold" parent="." instance=ExtResource("3_7rl82")]
+layout_mode = 1
+offset_left = 311.0
+offset_top = 299.0
+offset_right = -781.0
+offset_bottom = -319.0
+
+[node name="Control" parent="." instance=ExtResource("4_aeln0")]
+layout_mode = 1
+offset_left = 739.0
+offset_top = 268.0
+offset_right = -293.0
+offset_bottom = -230.0

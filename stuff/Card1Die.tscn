@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dih24uqp66ped"]
+
+[ext_resource type="Script" path="res://code/event/Card1Die.cs" id="1_w5jow"]
+
+[node name="Control" type="Control" groups=["Card1Die"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1032.0
+offset_bottom = -498.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w5jow")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 150.0
+color = Color(0.670588, 0.705882, 0.556863, 1)
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 105.0
+offset_right = 80.0
+offset_bottom = 145.0
+
+[node name="Button" type="Button" parent="ColorRect" groups=["card_add_die_button"]]
+visible = false
+layout_mode = 0
+offset_left = 40.0
+offset_top = 105.0
+offset_right = 80.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 11
+text = "Add
+Die"
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_adddie_pressed"]
