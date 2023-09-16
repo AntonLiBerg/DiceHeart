@@ -1,0 +1,26 @@
+using Godot;
+using System;
+using System.Linq;
+using System.Reflection.Metadata.Ecma335;
+
+public partial class CardHeart : Control
+{
+	public int MaxNrOfDice { get; private set; } = 20;
+	public int MinNrOfDice { get; private set; } = 1;
+	public bool IsRoomForDice()
+	{
+		GD.Print(this.Name);
+		return LogicCard
+				.GetDice(this)
+				.Count <= MaxNrOfDice;
+	}
+
+	public bool HasDice()
+		=> LogicCard
+			.GetDice(this)
+			.Any();
+	public void UpdateGame(Node root)
+	{
+
+	}
+}

@@ -2,38 +2,33 @@ using System;
 using System.Linq;
 using Godot;
 
-public class LogicDiceTray : Logic
+public static class LogicDiceTray
 {
-    private readonly LogicDice _logicDice;
-    public LogicDiceTray(Node root, LogicDice logicDice) : base(root)
-    {
-        _logicDice = logicDice;
-    }
 
-    public Node? TrySelectDie(int i)
+    public static Node? TrySelectDie(int i, Node root)
     {
-        var mDieToSelect = TryGetDieWithValue(i);
+        var mDieToSelect = TryGetDieWithValue(i, root);
         if (mDieToSelect is null)
             return null;
 
-        _logicDice.ToggleDieColorSelected(mDieToSelect);
+        LogicDice.ToggleDieColorSelected(mDieToSelect);
         return mDieToSelect;
     }
 
-    public void AddDie()
+    public static void AddDie(Node root)
     {
-        var dList = _root.GetNode<Node>("Dicetraybutton/DieTray/GridContainer");
+        var dList = root.GetNode<Node>("Dicetray/GridContainer");
         PackedScene DieScene = (PackedScene)GD.Load("res://stuff/Die.tscn");
         dList.AddChild(DieScene.Instantiate());
     }
 
-    private Node? TryGetDieWithValue(int i)
+    private static Node? TryGetDieWithValue(int i, Node root)
     {
-        return _root.GetNode<Node>("Dicetraybutton/DieTray/GridContainer")
+        return root.GetNode<Node>("Dicetray/GridContainer")
             .GetChildren()
             .FirstOrDefault(x =>
             {
-                var dVal = _logicDice.GetDieValue(x);
+                var dVal = LogicDice.GetDieValue(x);
                 return dVal == i;
             });
     }

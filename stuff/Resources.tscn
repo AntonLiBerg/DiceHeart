@@ -10,14 +10,6 @@ offset_bottom = -618.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
+[node name="Label" type="Label" parent="."]
 offset_right = 60.0
 offset_bottom = 30.0
-color = Color(0.45098, 0.466667, 0.266667, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
-offset_right = 60.0
-offset_bottom = 30.0
-theme_override_font_sizes/normal_font_size = 20
-scroll_active = false

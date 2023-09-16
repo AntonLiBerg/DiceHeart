@@ -7,34 +7,36 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1032.0
-offset_bottom = -498.0
+offset_right = -1062.0
+offset_bottom = -533.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nubo6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 120.0
-offset_bottom = 150.0
-color = Color(0.670588, 0.705882, 0.556863, 1)
+offset_top = 73.0
+offset_right = 90.0
+offset_bottom = 115.0
+color = Color(0, 0, 0, 0.1)
 
-[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 105.0
-offset_right = 80.0
-offset_bottom = 145.0
+offset_top = 73.0
+offset_right = 90.0
+offset_bottom = 115.0
+theme_override_constants/h_separation = 22
+theme_override_constants/v_separation = 21
+columns = 4
 
-[node name="Button" type="Button" parent="ColorRect" groups=["card_add_die_button"]]
+[node name="Button" type="Button" parent="." groups=["card_add_die_button"]]
 visible = false
 layout_mode = 0
-offset_left = 40.0
-offset_top = 105.0
-offset_right = 80.0
-offset_bottom = 145.0
-theme_override_font_sizes/font_size = 11
-text = "Add
-Die"
+offset_left = 17.0
+offset_top = 85.0
+offset_right = 71.0
+offset_bottom = 115.0
+theme_override_font_sizes/font_size = 12
+text = "Add Die"
 
-[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_adddie_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_adddie_pressed"]

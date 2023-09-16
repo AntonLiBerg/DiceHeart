@@ -7,29 +7,26 @@ public partial class game : Control
 {
 	private Node _selectedDie;
 	private PlayerState _playerState;
-	private LogicDiceTray _logicDiceTray;
-	private LogicDice _logicDice;
 	private double _sinceLastInput = 0;
 	public override void _Ready()
 	{
 		InitSignals();
-		GetNode<RichTextLabel>("Gold/ColorRect/RichTextLabel").Text = "10";
+		GetNode<Label>("ResGold/Label").Text = "10";
+		GetNode<Label>("ResGold/Label").Text = "10";
 		_playerState = PlayerState.None;
-		_logicDice = new LogicDice(this);
-		_logicDiceTray = new LogicDiceTray(this, _logicDice);
 	}
 	private void InitSignals()
 	{
 		var buttonPlay = GetNode<Button>("Button");
-		var buttonRoll = GetNode<Button>("Dicetraybutton/ButtonRoll");
-		var buttonAdd = GetNode<Button>("Dicetraybutton/ButtonAdd");
-		var CardWithDice = GetTree().GetNodesInGroup("CardWithDice");
+		var buttonRoll = GetNode<Button>("Dicetray/ButtonRoll");
+		var buttonAdd = GetNode<Button>("Dicetray/ButtonAdd");
+		var Cards = GetTree().GetNodesInGroup("CardWithDice");
 
 		buttonRoll.Pressed += _on_button_roll_pressed;
 		buttonAdd.Pressed += _on_button_add_pressed;
 		buttonPlay.Pressed += _on_button_play_pressed;
 
-		foreach (CardWithDice c in CardWithDice)
+		foreach (CardWithDice c in Cards)
 		{
 			c.AddDieToCard += _on_card_adddie_pressed;
 		}
@@ -56,13 +53,13 @@ public partial class game : Control
 			{
 				if (_playerState == PlayerState.DieSelected)
 				{
-					var dVal = _logicDice.GetDieValue(_selectedDie);
+					var dVal = LogicDice.GetDieValue(_selectedDie);
 					DeselectDie();
 					if (dVal == i)
 						return;
 				}
 
-				_selectedDie = _logicDiceTray.TrySelectDie(i);
+				_selectedDie = LogicDiceTray.TrySelectDie(i, this);
 				if (_selectedDie is null)
 					return;
 
@@ -76,17 +73,17 @@ public partial class game : Control
 	{
 		if (!TryPay(1))
 			return;
-		var dList = GetNode<Node>("Dicetraybutton/DieTray/GridContainer");
+		var dList = GetNode<Node>("Dicetray/GridContainer");
 		foreach (Control item in dList.GetChildren())
 		{
-			_logicDice.RollDie(item);
+			LogicDice.RollDie(item);
 		}
 	}
 	private void _on_button_add_pressed()
 	{
 		if (!TryPay(2))
 			return;
-		_logicDiceTray.AddDie();
+		LogicDiceTray.AddDie(this);
 	}
 	private void _on_card_adddie_pressed(Button emitter)
 	{
@@ -107,23 +104,24 @@ public partial class game : Control
 	}
 	private void DeselectDie()
 	{
-		_logicDice.ToggleDieColorSelected(_selectedDie);
+		LogicDice.ToggleDieColorSelected(_selectedDie);
 		_playerState = PlayerState.None;
 		_selectedDie = null;
 	}
 	private void ShowAddDieButtons(bool isVisible)
 	{
-		foreach (CardWithDice n in GetTree().GetNodesInGroup("CardWithDice"))
+		foreach (var n in GetTree().GetNodesInGroup("Cards"))
 		{
-			if(n.GetNode("ColorRect/GridContainer").GetChildCount() != 0)
+			if (!LogicCard.IsRoomForDice(n))
 				continue;
-				
-			n.GetNode<Button>("ColorRect/Button").Visible = isVisible;
+
+			n.GetNode<Button>("CardWithDice/Button")
+				.Visible = isVisible;
 		}
 	}
 	private bool TryPay(int cost)
 	{
-		var amountNode = GetNode<RichTextLabel>("Gold/ColorRect/RichTextLabel");
+		var amountNode = GetNode<Label>("ResGold/Label");
 		if (amountNode.Text.ToInt() < cost)
 			return false;
 
@@ -131,10 +129,14 @@ public partial class game : Control
 		return true;
 	}
 
-	
+
 	private void _on_button_play_pressed()
 	{
 		//1. Alla kort effekter
+		foreach (Node n in GetTree().GetNodesInGroup("Cards"))
+		{
+
+		}
 		//2. Alla kostnads effekter
 		//3. Alla event effekter
 	}
