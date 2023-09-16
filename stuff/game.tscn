@@ -34,3 +34,11 @@ offset_left = 739.0
 offset_top = 268.0
 offset_right = -293.0
 offset_bottom = -230.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 428.0
+offset_right = 591.0
+offset_bottom = 459.0
+text = "Play Turn"

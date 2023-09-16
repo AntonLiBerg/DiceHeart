@@ -20,19 +20,22 @@ public partial class game : Control
 	}
 	private void InitSignals()
 	{
+		var buttonPlay = GetNode<Button>("Button");
 		var buttonRoll = GetNode<Button>("Dicetraybutton/ButtonRoll");
 		var buttonAdd = GetNode<Button>("Dicetraybutton/ButtonAdd");
-		var card1Die = GetTree().GetNodesInGroup("Card1Die");
+		var CardWithDice = GetTree().GetNodesInGroup("CardWithDice");
 
 		buttonRoll.Pressed += _on_button_roll_pressed;
 		buttonAdd.Pressed += _on_button_add_pressed;
+		buttonPlay.Pressed += _on_button_play_pressed;
 
-		foreach (Card1Die c in card1Die)
+		foreach (CardWithDice c in CardWithDice)
 		{
 			c.AddDieToCard += _on_card_adddie_pressed;
 		}
 
 	}
+
 	public override void _Process(double delta)
 	{
 		_sinceLastInput += delta;
@@ -64,7 +67,7 @@ public partial class game : Control
 					return;
 
 				_playerState = PlayerState.DieSelected;
-				ShowAddDieButton(true);
+				ShowAddDieButtons(true);
 			}
 		}
 	}
@@ -99,7 +102,7 @@ public partial class game : Control
 			.GetNode<Button>("Button")
 			.Visible = false;
 
-		ShowAddDieButton(false);
+		ShowAddDieButtons(false);
 		DeselectDie();
 	}
 	private void DeselectDie()
@@ -108,9 +111,9 @@ public partial class game : Control
 		_playerState = PlayerState.None;
 		_selectedDie = null;
 	}
-	private void ShowAddDieButton(bool isVisible)
+	private void ShowAddDieButtons(bool isVisible)
 	{
-		foreach (Card1Die n in GetTree().GetNodesInGroup("Card1Die"))
+		foreach (CardWithDice n in GetTree().GetNodesInGroup("CardWithDice"))
 		{
 			if(n.GetNode("ColorRect/GridContainer").GetChildCount() != 0)
 				continue;
@@ -128,4 +131,11 @@ public partial class game : Control
 		return true;
 	}
 
+	
+	private void _on_button_play_pressed()
+	{
+		//1. Alla kort effekter
+		//2. Alla kostnads effekter
+		//3. Alla event effekter
+	}
 }

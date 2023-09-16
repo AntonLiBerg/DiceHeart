@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dih24uqp66ped"]
 
-[ext_resource type="Script" path="res://code/event/Card1Die.cs" id="1_w5jow"]
+[ext_resource type="Script" path="res://code/model/CardWithDice.cs" id="1_nubo6"]
 
-[node name="Control" type="Control" groups=["Card1Die"]]
+[node name="Control" type="Control" groups=["CardWithDice"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ offset_right = -1032.0
 offset_bottom = -498.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_w5jow")
+script = ExtResource("1_nubo6")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

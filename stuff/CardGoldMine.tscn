@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bea24fptvy3qt"]
 
-[ext_resource type="PackedScene" uid="uid://dih24uqp66ped" path="res://stuff/Card1Die.tscn" id="1_nn4gm"]
+[ext_resource type="PackedScene" uid="uid://dih24uqp66ped" path="res://stuff/CardWithDice.tscn" id="1_nn4gm"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ offset_bottom = -498.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Card1Die" parent="." instance=ExtResource("1_nn4gm")]
+[node name="CardWithDice" parent="." instance=ExtResource("1_nn4gm")]
 layout_mode = 1
 offset_right = -120.0
 offset_bottom = -150.0
