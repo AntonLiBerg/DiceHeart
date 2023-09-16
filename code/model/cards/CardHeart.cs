@@ -16,6 +16,6 @@ public partial class CardHeart : Control
 			.Any();
 	public void UpdateGame(Node root)
 	{
-
+        GD.Print("Hello");
 	}
 }

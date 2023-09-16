@@ -12,7 +12,7 @@ public partial class game : Control
 	{
 		InitSignals();
 		GetNode<Label>("ResGold/Label").Text = "10";
-		GetNode<Label>("ResGold/Label").Text = "10";
+		GetNode<Label>("ResHeart/Label").Text = "0";
 		_playerState = PlayerState.None;
 	}
 	private void InitSignals()
