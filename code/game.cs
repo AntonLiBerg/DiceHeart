@@ -135,9 +135,9 @@ public partial class game : Control
 		//1. Alla kort effekter
 		foreach (Node n in GetTree().GetNodesInGroup("Cards"))
 		{
-
+			LogicCard.CallUpdateGame(n, this);
 		}
-		//2. Alla kostnads effekter
-		//3. Alla event effekter
+		//2. Alla resurs-effekter
+		//3. Alla event-effekter
 	}
 }
