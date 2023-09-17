@@ -2,26 +2,18 @@ using Godot;
 using System;
 using System.Linq;
 
-public partial class CardSowAndSell : Control
+public partial class CardSowAndSell : ICard
 {
-	public int MaxNrOfDice { get; private set; } = 8;
-	public int MinNrOfDice { get; private set; } = 1;
-	public int MinDieQuality { get; private set; } = 5;
+	public override int MaxNrOfDice { get; protected set; } = 8;
+	public override int MinNrOfDice { get; protected set; } = 1;
+	public int MinDieQuality { get; private set; } = 4;
 	public int Progress { get; private set; } = 0;
-	public bool IsRoomForDice()
-		=> LogicCard
-				.GetDice(this)
-				.Count <= MaxNrOfDice;
+	public int Reward { get; private set; } = 12;
 
-	public bool HasDice()
-		=> LogicCard
-			.GetDice(this)
-			.Any();
-
-	public bool DieMeetsReqs(Node die)
+	public override bool DieMeetsReqs(Node die)
 		=> LogicDice.GetDieValue(die) >= MinDieQuality;
 
-	public void UpdateGame(Node root)
+	public override void UpdateGame(Node root)
 	{
 		Progress += LogicCard
 			.GetDice(this)
@@ -31,7 +23,7 @@ public partial class CardSowAndSell : Control
 		{
 			Progress = 0;
 			var gold = root.GetNode<Label>("ResGold/Label");
-			gold.Text = (gold.Text.ToInt() + 6).ToString();
+			gold.Text = (gold.Text.ToInt() + Reward).ToString();
 		}
 
 		GetNode<Label>("Label4").Text = Progress.ToString();

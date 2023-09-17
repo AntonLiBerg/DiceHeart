@@ -1,28 +1,28 @@
 using Godot;
+using System;
 using System.Linq;
 
-public partial class CardHeart : ICard
+public partial class CardTaxation : ICard
 {
 	public override int MaxNrOfDice { get; protected set; } = 8;
 	public override int MinNrOfDice { get; protected set; } = 1;
-
 	public override bool DieMeetsReqs(Node die)
 		=> true;
-
 	public override void UpdateGame(Node root)
 	{
-		var res = root
-			.GetNode<Label>("ResHeart/Label")
-			.Text
-			.ToInt();
+		var res = 0;
 
 		foreach (var d in LogicCard.GetDice(this))
 		{
-			res += LogicDice.GetDieValue(d);
+			var dVal = LogicDice.GetDieValue(d);
+			if (dVal <= 3)
+				res += 2;
+			else
+				res += 3;
 		}
 
-		var heart = root.GetNode<Label>("ResHeart/Label");
-		heart.Text = res.ToString();
+		var heart = root.GetNode<Label>("ResGold/Label");
+		heart.Text = (heart.Text.ToInt() + res).ToString();
 		LogicCard.RemoveAllDice(this);
 	}
 }

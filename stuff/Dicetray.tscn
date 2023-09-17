@@ -5,24 +5,26 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -882.0
-offset_bottom = -523.0
+offset_right = -864.0
+offset_bottom = -512.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 300.0
+layout_mode = 0
+offset_right = 288.0
 offset_bottom = 100.0
 color = Color(0.258824, 0.270588, 0.305882, 1)
 
 [node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 302.0
-offset_bottom = 102.0
-theme_override_constants/h_separation = 45
-theme_override_constants/v_separation = 45
-columns = 6
+offset_right = 287.0
+offset_bottom = 100.0
+theme_override_constants/h_separation = 22
+theme_override_constants/v_separation = 22
+columns = 13
 
 [node name="ButtonRoll" type="Button" parent="."]
 layout_mode = 0
