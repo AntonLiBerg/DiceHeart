@@ -29,4 +29,10 @@ public static class LogicCard
     public static void RemoveAllDice(Node card)
         => GetDice(card)
             .ForEach(d => d.QueueFree());
+
+    public static bool DieMeetsReqs(Node card, Node selectedDie)
+        => (bool)card
+        .GetType()
+        .GetMethod("DieMeetsReqs")
+        .Invoke(card, new object[] { selectedDie });
 }

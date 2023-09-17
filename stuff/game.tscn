@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfrlgcqejgv4a"]
+[gd_scene load_steps=7 format=3 uid="uid://dfrlgcqejgv4a"]
 
 [ext_resource type="Script" path="res://code/game.cs" id="1_m1spv"]
 [ext_resource type="PackedScene" uid="uid://dcnauyqqglbyh" path="res://stuff/Dicetray.tscn" id="1_ryux4"]
 [ext_resource type="PackedScene" uid="uid://bicywlfvx05ge" path="res://stuff/ResGold.tscn" id="4_31xa6"]
 [ext_resource type="PackedScene" uid="uid://ce6e4w3ql73xp" path="res://stuff/CardHeart.tscn" id="4_jt17l"]
 [ext_resource type="PackedScene" uid="uid://bqrh4nf273hlq" path="res://stuff/ResHeart.tscn" id="5_rjiuy"]
+[ext_resource type="PackedScene" uid="uid://cubstg0pwomrd" path="res://stuff/CardSowAndSell.tscn" id="6_jkrj3"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -44,9 +45,16 @@ offset_top = 349.0
 offset_right = -749.0
 offset_bottom = -269.0
 
-[node name="Control" parent="." instance=ExtResource("4_jt17l")]
+[node name="CardHeart" parent="." instance=ExtResource("4_jt17l")]
 layout_mode = 1
 offset_left = 726.0
 offset_top = 290.0
 offset_right = -336.0
+offset_bottom = -243.0
+
+[node name="CardSowAndSell" parent="." instance=ExtResource("6_jkrj3")]
+layout_mode = 1
+offset_left = 826.0
+offset_top = 290.0
+offset_right = -236.0
 offset_bottom = -243.0

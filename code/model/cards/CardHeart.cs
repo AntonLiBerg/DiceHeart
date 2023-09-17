@@ -3,7 +3,7 @@ using System.Linq;
 
 public partial class CardHeart : Control
 {
-	public int MaxNrOfDice { get; private set; } = 20;
+	public int MaxNrOfDice { get; private set; } = 8;
 	public int MinNrOfDice { get; private set; } = 1;
 	public bool IsRoomForDice()
 		=> LogicCard
@@ -14,6 +14,9 @@ public partial class CardHeart : Control
 		=> LogicCard
 			.GetDice(this)
 			.Any();
+	public bool DieMeetsReqs(Node die)
+		=> true;
+
 	public void UpdateGame(Node root)
 	{
 		var res = root
@@ -25,10 +28,9 @@ public partial class CardHeart : Control
 		{
 			res += LogicDice.GetDieValue(d);
 		}
-		
-		root
-			.GetNode<Label>("ResHeart/Label")
-			.Text = res.ToString();
+
+		var heart = root.GetNode<Label>("ResHeart/Label");
+		heart.Text = (heart.Text.ToInt() + res).ToString();
 		LogicCard.RemoveAllDice(this);
 	}
 }

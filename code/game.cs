@@ -112,7 +112,7 @@ public partial class game : Control
 		//2. Alla resurs-effekter
 		//3. Alla event-effekter
 	}
-	
+
 	private void DeselectDie()
 	{
 		LogicDice.ToggleDieColorSelected(_selectedDie);
@@ -123,7 +123,8 @@ public partial class game : Control
 	{
 		foreach (var n in GetTree().GetNodesInGroup("Cards"))
 		{
-			if (!LogicCard.IsRoomForDice(n))
+			if (!LogicCard.IsRoomForDice(n)
+				|| !LogicCard.DieMeetsReqs(n, _selectedDie))
 				continue;
 
 			n.GetNode<Button>("CardWithDice/Button")
