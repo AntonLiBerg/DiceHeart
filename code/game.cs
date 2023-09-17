@@ -64,7 +64,7 @@ public partial class game : Control
 					return;
 
 				_playerState = PlayerState.DieSelected;
-				ShowAddDieButtons(true);
+				ShowAddDieButtons();
 			}
 		}
 	}
@@ -99,7 +99,7 @@ public partial class game : Control
 			.GetNode<Button>("Button")
 			.Visible = false;
 
-		ShowAddDieButtons(false);
+		HideAddDieButtons();
 		DeselectDie();
 	}
 	private void _on_button_play_pressed()
@@ -118,8 +118,9 @@ public partial class game : Control
 		LogicDice.ToggleDieColorSelected(_selectedDie);
 		_playerState = PlayerState.None;
 		_selectedDie = null;
+		HideAddDieButtons();
 	}
-	private void ShowAddDieButtons(bool isVisible)
+	private void ShowAddDieButtons()
 	{
 		foreach (var n in GetTree().GetNodesInGroup("Cards"))
 		{
@@ -128,8 +129,14 @@ public partial class game : Control
 				continue;
 
 			n.GetNode<Button>("CardWithDice/Button")
-				.Visible = isVisible;
+				.Visible = true;
 		}
+	}
+	private void HideAddDieButtons()
+	{
+		foreach (var n in GetTree().GetNodesInGroup("Cards"))
+			n.GetNode<Button>("CardWithDice/Button")
+				.Visible = false;
 	}
 	private bool TryPay(int cost)
 	{
