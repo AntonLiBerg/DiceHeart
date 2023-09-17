@@ -12,17 +12,21 @@ public static class LogicCard
             .GetChildren()
             .ToList<Node>();
     }
-    public static bool IsRoomForDice(Node n)
+    public static bool IsRoomForDice(Node card)
     {
-        return (bool)n
+        return (bool)card
             .GetType()
             .GetMethod("IsRoomForDice")
-            .Invoke(n, null);
+            .Invoke(card, null);
     }
 
-    public static void CallUpdateGame(Node n, Node root)
-        => n
+    public static void CallUpdateGame(Node card, Node root)
+        => card
         .GetType()
         .GetMethod("UpdateGame")
-        .Invoke(n, new object[] { root });
+        .Invoke(card, new object[] { root });
+
+    public static void RemoveAllDice(Node card)
+        => GetDice(card)
+            .ForEach(d => d.QueueFree());
 }

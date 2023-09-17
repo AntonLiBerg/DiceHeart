@@ -102,6 +102,17 @@ public partial class game : Control
 		ShowAddDieButtons(false);
 		DeselectDie();
 	}
+	private void _on_button_play_pressed()
+	{
+		//1. Alla kort effekter
+		foreach (Node n in GetTree().GetNodesInGroup("Cards"))
+		{
+			LogicCard.CallUpdateGame(n, this);
+		}
+		//2. Alla resurs-effekter
+		//3. Alla event-effekter
+	}
+	
 	private void DeselectDie()
 	{
 		LogicDice.ToggleDieColorSelected(_selectedDie);
@@ -130,14 +141,4 @@ public partial class game : Control
 	}
 
 
-	private void _on_button_play_pressed()
-	{
-		//1. Alla kort effekter
-		foreach (Node n in GetTree().GetNodesInGroup("Cards"))
-		{
-			LogicCard.CallUpdateGame(n, this);
-		}
-		//2. Alla resurs-effekter
-		//3. Alla event-effekter
-	}
 }

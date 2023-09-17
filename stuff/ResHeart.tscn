@@ -4,10 +4,11 @@
 
 [node name="Control" instance=ExtResource("1_f0djx")]
 
-[node name="Label" parent="." index="0"]
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
 layout_mode = 0
-
-[node name="ColorRect" type="ColorRect" parent="." index="1"]
 offset_right = 60.0
 offset_bottom = 30.0
 color = Color(0.517647, 0.168627, 0.12549, 1)
+
+[node name="Label" parent="." index="1"]
+layout_mode = 0
