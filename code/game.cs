@@ -109,10 +109,17 @@ public partial class game : Control
 		{
 			LogicCard.CallUpdateGame(n, this);
 		}
-		//2. Alla resurs-effekter
+
+		var h = GetNode<Label>("ResHeart/Label").Text.ToInt();
+		h--;
+		GetNode<Label>("ResHeart/Label").Text = h.ToString();
+		var t = GetNode<Label>("Label2").Text.ToInt();
+		t++;
+		GetNode<Label>("Label2").Text = t.ToString();
+
+
 		//3. Alla event-effekter
 	}
-
 	private void DeselectDie()
 	{
 		LogicDice.ToggleDieColorSelected(_selectedDie);
