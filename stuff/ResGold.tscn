@@ -3,12 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://dintj2ikeoovx" path="res://stuff/Resources.tscn" id="1_eeres"]
 
 [node name="Control" instance=ExtResource("1_eeres")]
+offset_right = -1070.0
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 layout_mode = 0
-offset_right = 60.0
+offset_right = 82.0
 offset_bottom = 30.0
 color = Color(0.345098, 0.396078, 0.121569, 1)
 
 [node name="Label" parent="." index="1"]
+offset_left = 22.0
+offset_right = 82.0
 text = "10"
+
+[node name="Label2" type="Label" parent="." index="2"]
+offset_right = 22.0
+offset_bottom = 30.0
+text = "🪙"
+vertical_alignment = 1
+clip_text = true

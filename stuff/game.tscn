@@ -27,17 +27,17 @@ text = "Play turn"
 
 [node name="ResGold" parent="." instance=ExtResource("4_31xa6")]
 layout_mode = 1
-offset_left = 286.0
-offset_top = 317.0
-offset_right = -806.0
-offset_bottom = -301.0
+offset_left = 270.0
+offset_top = 316.0
+offset_right = -822.0
+offset_bottom = -302.0
 
 [node name="ResHeart" parent="." instance=ExtResource("5_rjiuy")]
 layout_mode = 1
-offset_left = 286.0
-offset_top = 348.0
-offset_right = -806.0
-offset_bottom = -270.0
+offset_left = 270.0
+offset_top = 347.0
+offset_right = -822.0
+offset_bottom = -271.0
 
 [node name="Dicetray" parent="." instance=ExtResource("1_ryux4")]
 layout_mode = 1
