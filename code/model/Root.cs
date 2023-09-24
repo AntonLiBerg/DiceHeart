@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public class Root
@@ -26,14 +27,22 @@ public class Root
 
     public void Process(double delta)
     {
+        if (PlayerState == PlayerState.GameOverStart)
+        {
+            ShowGameOver();
+            PlayerState = PlayerState.GameOver;
+        }
+
         _sinceLastInput += delta;
-        if (!Input.IsAnythingPressed() ||
+        if (PlayerState == PlayerState.GameOver ||
+                !Input.IsAnythingPressed() ||
                 _sinceLastInput < 0.1 ||
                 Input.IsMouseButtonPressed(MouseButton.Left) ||
                 Input.IsMouseButtonPressed(MouseButton.Right) ||
                 Input.IsMouseButtonPressed(MouseButton.Middle)
             )
             return;
+
 
         _sinceLastInput = 0;
         var keys = new Key[] { Key.Key0, Key.Key1, Key.Key2, Key.Key3, Key.Key4, Key.Key5, Key.Key6 };
@@ -59,6 +68,17 @@ public class Root
             }
         }
     }
+
+    private void ShowGameOver()
+    {
+        var n = GetNode<Control>("PopGameOver");
+        n.Visible = true;
+        n.GetNode<Button>("Button").Pressed += () =>
+        {
+            GetTree().ReloadCurrentScene();
+        };
+    }
+
     public T GetNode<T>(string path) where T : Control
         => Game.GetNode<T>(path);
     public SceneTree GetTree()

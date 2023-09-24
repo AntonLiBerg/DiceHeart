@@ -5,7 +5,6 @@ public partial class CardHeart : ICard
 {
 	public override int MaxNrOfDice { get; protected set; } = 8;
 	public override int MinNrOfDice { get; protected set; } = 1;
-	public bool IsStarted { get; protected set; } = false;
 
 	public override bool DieMeetsReqs(Die die)
 		=> true;
@@ -22,9 +21,10 @@ public partial class CardHeart : ICard
 			res += LogicDice.GetDieValue(d);
 		}
 
-		if (IsStarted && res <= 0)
+		if (res <= 0)
 		{
-
+			root.PlayerState = PlayerState.GameOverStart;
+			return;
 		}
 
 		var heart = root.GetNode<Label>("ResHeart/Label");

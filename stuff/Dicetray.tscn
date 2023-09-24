@@ -6,7 +6,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -864.0
-offset_bottom = -512.0
+offset_bottom = -491.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -28,16 +28,18 @@ columns = 13
 
 [node name="ButtonRoll" type="Button" parent="."]
 layout_mode = 0
-offset_left = 95.0
+offset_left = 59.0
 offset_top = 103.0
-offset_right = 148.0
-offset_bottom = 134.0
-text = "Roll"
+offset_right = 132.0
+offset_bottom = 157.0
+text = "1🪙
+Roll dice"
 
 [node name="ButtonAdd" type="Button" parent="."]
 layout_mode = 0
-offset_left = 155.0
+offset_left = 136.0
 offset_top = 103.0
-offset_right = 208.0
-offset_bottom = 134.0
-text = "Add"
+offset_right = 216.0
+offset_bottom = 157.0
+text = "2🪙 
+Add 1 die"
