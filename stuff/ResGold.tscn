@@ -11,4 +11,4 @@ offset_bottom = 30.0
 color = Color(0.345098, 0.396078, 0.121569, 1)
 
 [node name="Label" parent="." index="1"]
-layout_mode = 0
+text = "10"

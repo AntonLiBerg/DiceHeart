@@ -5,14 +5,14 @@ using Godot;
 
 public static class LogicCard
 {
-    public static List<Node> GetDice(Node card)
+    public static List<Node> GetDice(ICard card)
     {
         return card
             .GetNode("CardWithDice/GridContainer")
             .GetChildren()
             .ToList<Node>();
     }
-    public static bool IsRoomForDice(Node card)
+    public static bool IsRoomForDice(ICard card)
     {
         return (bool)card
             .GetType()
@@ -20,17 +20,17 @@ public static class LogicCard
             .Invoke(card, null);
     }
 
-    public static void CallUpdateGame(Node card, Node root)
+    public static void CallUpdateGame(ICard card, Root root)
         => card
         .GetType()
         .GetMethod("UpdateGame")
         .Invoke(card, new object[] { root });
 
-    public static void RemoveAllDice(Node card)
+    public static void RemoveAllDice(ICard card)
         => GetDice(card)
             .ForEach(d => d.QueueFree());
 
-    public static bool DieMeetsReqs(Node card, Node selectedDie)
+    public static bool DieMeetsReqs(ICard card, Node selectedDie)
         => (bool)card
         .GetType()
         .GetMethod("DieMeetsReqs")

@@ -14,15 +14,15 @@ public static class LogicDice
         get { return new Color(0.45f, 0.45f, 0.45f); }
     }
 
-    public static void RollDie(Node c) 
+    public static void RollDie(Die c) 
         => c.GetNode<Label>("Label").Text = new Random()
             .Next(1, 7)
             .ToString();
-    public static int GetDieValue(Node d)
+    public static int GetDieValue(Die d)
         => d.GetNode<Label>("Label")
             .Text
             .ToInt();
-    public static void ToggleDieColorSelected(Node d)
+    public static void ToggleDieColorSelected(Die d)
     {
         var dColor = d.GetNode<ColorRect>("ColorRect");
         if (dColor.Color.R == DIE_SELECTED_COLOR.R &&

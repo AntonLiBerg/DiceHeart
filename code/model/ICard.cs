@@ -16,7 +16,7 @@ public abstract partial class ICard : Control
         => LogicCard
             .GetDice(this)
             .Any();
-    public abstract bool DieMeetsReqs(Node die);
+    public abstract bool DieMeetsReqs(Die die);
 
-    public abstract void UpdateGame(Node root);
+    public abstract void UpdateGame(Root root);
 }

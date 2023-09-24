@@ -76,6 +76,7 @@ offset_bottom = 299.0
 text = "Turn"
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 519.0
 offset_top = 273.0
 offset_right = 650.0

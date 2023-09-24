@@ -5,9 +5,9 @@ using Godot;
 public static class LogicDiceTray
 {
 
-    public static Node? TrySelectDie(int i, Node root)
+    public static Die? TrySelectDie(int i, Root root)
     {
-        var mDieToSelect = TryGetDieWithValue(i, root);
+        Die mDieToSelect = TryGetDieWithValue(i, root);
         if (mDieToSelect is null)
             return null;
 
@@ -15,21 +15,22 @@ public static class LogicDiceTray
         return mDieToSelect;
     }
 
-    public static void AddDie(Node root)
+    public static void AddDie(Root root)
     {
-        var dList = root.GetNode<Node>("Dicetray/GridContainer");
+        var dList = root.GetNode<Control>("Dicetray/GridContainer");
         PackedScene DieScene = (PackedScene)GD.Load("res://stuff/Die.tscn");
         dList.AddChild(DieScene.Instantiate());
     }
 
-    private static Node? TryGetDieWithValue(int i, Node root)
+    private static Die? TryGetDieWithValue(int i, Root root)
     {
-        return root.GetNode<Node>("Dicetray/GridContainer")
+        var res = root.GetNode<Control>("Dicetray/GridContainer")
             .GetChildren()
             .FirstOrDefault(x =>
             {
-                var dVal = LogicDice.GetDieValue(x);
+                var dVal = LogicDice.GetDieValue((Die)x);
                 return dVal == i;
             });
+        return (Die)res;
     }
 }

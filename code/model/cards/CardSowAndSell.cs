@@ -10,10 +10,10 @@ public partial class CardSowAndSell : ICard
 	public int Progress { get; private set; } = 0;
 	public int Reward { get; private set; } = 12;
 
-	public override bool DieMeetsReqs(Node die)
+	public override bool DieMeetsReqs(Die die)
 		=> LogicDice.GetDieValue(die) >= MinDieQuality;
 
-	public override void UpdateGame(Node root)
+	public override void UpdateGame(Root root)
 	{
 		Progress += LogicCard
 			.GetDice(this)
