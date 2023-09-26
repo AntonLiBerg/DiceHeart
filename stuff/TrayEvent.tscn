@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://qmddtm5tn8q7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -327.0
+offset_bottom = -273.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 825.0
+offset_bottom = 375.0
+theme_override_constants/h_separation = 165
+theme_override_constants/v_separation = 125
+columns = 5

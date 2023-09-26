@@ -21,8 +21,8 @@ public partial class CardTaxation : ICard
 				res += 3;
 		}
 
-		var heart = root.GetNode<Label>("ResGold/Label");
-		heart.Text = (heart.Text.ToInt() + res).ToString();
+		var coins = root.GetNode<Label>("ResGold/Label");
+		coins.Text = (coins.Text.ToInt() + res).ToString();
 		LogicCard.RemoveAllDice(this);
 	}
 }

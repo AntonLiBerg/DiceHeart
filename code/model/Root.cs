@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using Godot;
 
 public class Root
@@ -117,6 +118,16 @@ public class Root
         amountNode.Text = (amountNode.Text.ToInt() - cost).ToString();
         return true;
     }
+    private void AddNewEvent()
+    {
+        EventPoorHarvest ev = (EventPoorHarvest)((PackedScene)GD.Load("res://stuff/EventPoorHarvest.tscn"))
+            .Instantiate();
+
+        ev.AddDieToEvent += _on_event_addie_pressed;
+
+        GetNode<Control>("TrayEvent")
+            .AddChild(ev);
+    }
 
     //EVENTS
     private void _on_button_roll_pressed()
@@ -160,6 +171,13 @@ public class Root
             LogicCard.CallUpdateGame(n, this);
         }
 
+        //2. Alla event effekter
+        foreach (IEvent n in GetTree().GetNodesInGroup("Events"))
+        {
+            LogicEvent.CallUpdateGame(n, this);
+        }
+
+        //Upkeep och turn
         var h = GetNode<Label>("ResHeart/Label").Text.ToInt();
         h--;
         GetNode<Label>("ResHeart/Label").Text = h.ToString();
@@ -168,6 +186,25 @@ public class Root
         GetNode<Label>("Label2").Text = t.ToString();
 
 
-        //3. Alla event-effekter
+        if (new Random().Next(1, 3) == 1)
+        {
+            AddNewEvent();
+        }
+    }
+    private void _on_event_addie_pressed(Button emitter)
+    {
+        SelectedDie
+            .GetParent()
+            .RemoveChild(SelectedDie);
+        emitter
+            .GetParent()
+            .GetNode("GridContainer")
+            .AddChild(SelectedDie);
+        emitter
+            .GetParent()
+            .GetNode<Button>("Button")
+            .Visible = false;
+        HideAddDieButtons();
+        DeselectDie();
     }
 }
