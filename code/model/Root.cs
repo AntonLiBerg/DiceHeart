@@ -70,7 +70,7 @@ public class Root
         }
     }
 
-    private void ShowGameOver()
+    public void ShowGameOver()
     {
         var n = GetNode<Control>("PopGameOver");
         n.Visible = true;
@@ -84,14 +84,14 @@ public class Root
         => Game.GetNode<T>(path);
     public SceneTree GetTree()
         => Game.GetTree();
-    private void DeselectDie()
+    public void DeselectDie()
     {
         LogicDice.ToggleDieColorSelected(SelectedDie);
         PlayerState = PlayerState.None;
         SelectedDie = null;
         HideAddDieButtons();
     }
-    private void ShowAddDieButtons()
+    public void ShowAddDieButtons()
     {
         foreach (ICard n in GetTree().GetNodesInGroup("Cards"))
         {
@@ -103,13 +103,13 @@ public class Root
                 .Visible = true;
         }
     }
-    private void HideAddDieButtons()
+    public void HideAddDieButtons()
     {
         foreach (var n in GetTree().GetNodesInGroup("Cards"))
             n.GetNode<Button>("CardWithDice/Button")
                 .Visible = false;
     }
-    private bool TryPay(int cost)
+    public bool TryPay(int cost)
     {
         var amountNode = GetNode<Label>("ResGold/Label");
         if (amountNode.Text.ToInt() < cost)
@@ -118,19 +118,17 @@ public class Root
         amountNode.Text = (amountNode.Text.ToInt() - cost).ToString();
         return true;
     }
-    private void AddNewEvent()
+    public void AddNewChange()
     {
-        EventPoorHarvest ev = (EventPoorHarvest)((PackedScene)GD.Load("res://stuff/EventPoorHarvest.tscn"))
-            .Instantiate();
+        var c = new CPoorHarvest()
+            .MakeChange(this);
 
-        ev.AddDieToEvent += _on_event_addie_pressed;
-
-        GetNode<Control>("TrayEvent")
-            .AddChild(ev);
+        GetNode<Control>("Changes")
+            .AddChild(c);
     }
 
     //EVENTS
-    private void _on_button_roll_pressed()
+    public void _on_button_roll_pressed()
     {
         if (!TryPay(1))
             return;
@@ -140,13 +138,13 @@ public class Root
             LogicDice.RollDie(item);
         }
     }
-    private void _on_button_add_pressed()
+    public void _on_button_add_pressed()
     {
         if (!TryPay(2))
             return;
         LogicDiceTray.AddDie(this);
     }
-    private void _on_card_adddie_pressed(Button emitter)
+    public void _on_card_adddie_pressed(Button emitter)
     {
         SelectedDie
             .GetParent()
@@ -163,7 +161,7 @@ public class Root
         HideAddDieButtons();
         DeselectDie();
     }
-    private void _on_button_play_pressed()
+    public void _on_button_play_pressed()
     {
         //1. Alla kort effekter
         foreach (ICard n in GetTree().GetNodesInGroup("Cards"))
@@ -172,10 +170,6 @@ public class Root
         }
 
         //2. Alla event effekter
-        foreach (IEvent n in GetTree().GetNodesInGroup("Events"))
-        {
-            LogicEvent.CallUpdateGame(n, this);
-        }
 
         //Upkeep och turn
         var h = GetNode<Label>("ResHeart/Label").Text.ToInt();
@@ -188,23 +182,7 @@ public class Root
 
         if (new Random().Next(1, 3) == 1)
         {
-            AddNewEvent();
+            AddNewChange();
         }
-    }
-    private void _on_event_addie_pressed(Button emitter)
-    {
-        SelectedDie
-            .GetParent()
-            .RemoveChild(SelectedDie);
-        emitter
-            .GetParent()
-            .GetNode("GridContainer")
-            .AddChild(SelectedDie);
-        emitter
-            .GetParent()
-            .GetNode<Button>("Button")
-            .Visible = false;
-        HideAddDieButtons();
-        DeselectDie();
     }
 }
