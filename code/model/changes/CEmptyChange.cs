@@ -8,16 +8,6 @@ public class CEmptyChange : IAilment
     public override int PriceToEnd { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
     public override Color Color { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
 
-    public override IAilment GetNextChange()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override bool IsFinished()
-    {
-        return true;
-    }
-
     public override bool TryPay(Root root)
     {
         throw new System.NotImplementedException();

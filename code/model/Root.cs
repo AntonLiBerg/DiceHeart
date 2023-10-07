@@ -130,9 +130,8 @@ public class Root
         amountNode.Text = (amountNode.Text.ToInt() - cost).ToString();
         return true;
     }
-    public void AddNewChange()
+    public void AddNewChange(IChange c)
     {
-        var c = new AlPoorHarvest();
         Changes.Add(c);
         c.MakeChange(this);
     }
@@ -186,8 +185,11 @@ public class Root
         var t = GetNode<Label>("Label2").Text.ToInt();
         t++;
         GetNode<Label>("Label2").Text = t.ToString();
-
-        if (new Random().Next(1, 3) == 1)
-            AddNewChange();
+        
+        var r = new Random().Next(1, 6);
+        if (r == 1)
+            AddNewChange(new AlPoorHarvest());
+        else if (r == 2)
+            AddNewChange(new AlCrimeWave());
     }
 }

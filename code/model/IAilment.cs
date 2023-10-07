@@ -11,17 +11,18 @@ public abstract class IAilment : IChange
         c.GetNode<Label>("Label4").Text = EachTurnLabel;
         c.GetNode<Label>("Label5").Text = PriceToEndLabel;
         c.GetNode<ColorRect>("ColorRect").Color = Color;
+        c.GetNode<Button>("Button").Visible = ShowToEndNodes;
+        c.GetNode<Label>("Label3").Visible = ShowToEndNodes;
         c.GetNode<Button>("Button")
             .Pressed += () =>
             {
                 if (TryPay(root))
-                {
-                    c.GetParent()
-                        .RemoveChild(c);
-                    root.Changes.Remove(this);
-                }
+                    RemoveThisChange(root);
+
             };
         root.GetNode<Control>("Changes")
             .AddChild(c);
+
+        Change = c;
     }
 }

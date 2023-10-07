@@ -8,14 +8,6 @@ public class AlPoorHarvest : IAilment
     public override int PriceToEnd { get; protected set; } = 2;
     public override Color Color { get; protected set; } = Colors.DarkRed;
 
-    public override IAilment GetNextChange()
-        => new CEmptyChange();
-
-    public override bool IsFinished()
-    {
-        return false;
-    }
-
     public override bool TryPay(Root root)
     {
         if (root.TryPay(PriceToEnd))

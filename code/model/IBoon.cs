@@ -2,7 +2,7 @@ using Godot;
 
 public abstract class IBoon : IChange
 {
-    public bool ShowToEndNodes { get; protected set; } = false;
+    public override bool ShowToEndNodes { get; protected set; } = false;
     public override void MakeChange(Root root)
     {
 
@@ -15,5 +15,7 @@ public abstract class IBoon : IChange
         c.GetNode<Label>("Label3").Visible = ShowToEndNodes;
         root.GetNode<Control>("Changes")
             .AddChild(c);
+        
+        Change = c;
     }
 }

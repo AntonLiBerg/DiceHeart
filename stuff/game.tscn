@@ -78,10 +78,10 @@ text = "Keep the heart beating!
 End every turn with 
 atleast 1 ♥️
 
-Press number to select die
-
 Every turn ♥️ is 
-decreased by 1"
+decreased by 1
+
+Press 1-6 to select a die of that number"
 horizontal_alignment = 1
 autowrap_mode = 2
 

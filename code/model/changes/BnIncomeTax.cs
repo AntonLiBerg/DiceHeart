@@ -9,13 +9,6 @@ public class BnIncomeTax : IBoon
     public override int PriceToEnd { get; protected set; }
     public override Color Color { get; protected set; } = Colors.DarkGreen;
 
-    public override IChange GetNextChange()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override bool IsFinished()
-        => false;
 
     public override bool TryPay(Root root)
     {
