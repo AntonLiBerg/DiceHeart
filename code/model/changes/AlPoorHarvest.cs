@@ -1,12 +1,14 @@
 using Godot;
 
-public class CPoorHarvest : IChange
+public class AlPoorHarvest : IAilment
 {
     public override string Title { get; protected set; } = "Poor Harvest";
     public override string EachTurnLabel { get; protected set; } = "-1🪙";
     public override string PriceToEndLabel { get; protected set; } = "2🪙";
     public override int PriceToEnd { get; protected set; } = 2;
-    public override IChange GetNextChange()
+    public override Color Color { get; protected set; } = Colors.DarkRed;
+
+    public override IAilment GetNextChange()
         => new CEmptyChange();
 
     public override bool IsFinished()
@@ -24,6 +26,6 @@ public class CPoorHarvest : IChange
     public override void UpdateGame(Root root)
     {
         var amountNode = root.GetNode<Label>("ResGold/Label");
-        amountNode.Text = (amountNode.Text.ToInt() - 2).ToString();
+        amountNode.Text = (amountNode.Text.ToInt() - 1).ToString();
     }
 }

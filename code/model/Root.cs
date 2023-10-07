@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Godot;
 
@@ -8,27 +9,40 @@ public class Root
     public PlayerState PlayerState;
     public double _sinceLastInput = 0;
     public Control Game { get; private set; }
+    public List<ICard> Cards;
+    public List<IChange> Changes;
     public Root(Control game)
     {
         Game = game;
         var buttonPlay = GetNode<Button>("Button");
         var buttonRoll = GetNode<Button>("Dicetray/ButtonRoll");
         var buttonAdd = GetNode<Button>("Dicetray/ButtonAdd");
-        var Cards = GetTree().GetNodesInGroup("CardWithDice");
+        PlayerState = PlayerState.Start;
+        Cards = new List<ICard>();
+        Changes = new List<IChange>();
 
         buttonRoll.Pressed += _on_button_roll_pressed;
         buttonAdd.Pressed += _on_button_add_pressed;
         buttonPlay.Pressed += _on_button_play_pressed;
-
-        foreach (CardWithDice c in Cards)
-        {
-            c.AddDieToCard += _on_card_adddie_pressed;
-        }
     }
 
     public void Process(double delta)
     {
-        if (PlayerState == PlayerState.GameOverStart)
+        if (PlayerState == PlayerState.Start)
+        {
+            var ch = new CrdHeart();
+            ch.Make(this);
+            Cards.Add(ch);
+            var ci = new CrdInvest();
+            ci.Make(this);
+            Cards.Add(ci);
+
+            PlayerState = PlayerState.None;
+            var c = new BnIncomeTax();
+            c.MakeChange(this);
+            Changes.Add(c);
+        }
+        else if (PlayerState == PlayerState.GameOverStart)
         {
             ShowGameOver();
             PlayerState = PlayerState.GameOver;
@@ -93,21 +107,19 @@ public class Root
     }
     public void ShowAddDieButtons()
     {
-        foreach (ICard n in GetTree().GetNodesInGroup("Cards"))
+        foreach (ICard c in Cards)
         {
-            if (!LogicCard.IsRoomForDice(n)
-                || !LogicCard.DieMeetsReqs(n, SelectedDie))
+            if (!c.IsRoomForDie()
+                || !c.DieMeetsReq(SelectedDie))
                 continue;
 
-            n.GetNode<Button>("CardWithDice/Button")
-                .Visible = true;
+            c.ShowButton();
         }
     }
     public void HideAddDieButtons()
     {
-        foreach (var n in GetTree().GetNodesInGroup("Cards"))
-            n.GetNode<Button>("CardWithDice/Button")
-                .Visible = false;
+        foreach (var c in Cards)
+            c.HideButton();
     }
     public bool TryPay(int cost)
     {
@@ -120,11 +132,9 @@ public class Root
     }
     public void AddNewChange()
     {
-        var c = new CPoorHarvest()
-            .MakeChange(this);
-
-        GetNode<Control>("Changes")
-            .AddChild(c);
+        var c = new AlPoorHarvest();
+        Changes.Add(c);
+        c.MakeChange(this);
     }
 
     //EVENTS
@@ -134,9 +144,7 @@ public class Root
             return;
         var dList = GetNode<Control>("Dicetray/GridContainer");
         foreach (Die item in dList.GetChildren())
-        {
             LogicDice.RollDie(item);
-        }
     }
     public void _on_button_add_pressed()
     {
@@ -163,13 +171,13 @@ public class Root
     }
     public void _on_button_play_pressed()
     {
-        //1. Alla kort effekter
-        foreach (ICard n in GetTree().GetNodesInGroup("Cards"))
-        {
-            LogicCard.CallUpdateGame(n, this);
-        }
+        foreach (ICard c in Cards)
+            c.UpdateGame(this);
+
 
         //2. Alla event effekter
+        foreach (IChange c in Changes)
+            c.UpdateGame(this);
 
         //Upkeep och turn
         var h = GetNode<Label>("ResHeart/Label").Text.ToInt();
@@ -179,10 +187,7 @@ public class Root
         t++;
         GetNode<Label>("Label2").Text = t.ToString();
 
-
         if (new Random().Next(1, 3) == 1)
-        {
             AddNewChange();
-        }
     }
 }

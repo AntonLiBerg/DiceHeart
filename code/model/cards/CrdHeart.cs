@@ -1,12 +1,12 @@
 using Godot;
-using System.Linq;
 
-public partial class CardHeart : ICard
+public class CrdHeart : ICard
 {
-	public override int MaxNrOfDice { get; protected set; } = 8;
-	public override int MinNrOfDice { get; protected set; } = 1;
+	public override string Title { get; protected set; } = "Heart";
+	public override string Description { get; protected set; } = "d[x] = +x ♥️";
+	public override Color BColor { get; protected set; } = Colors.PaleVioletRed;
 
-	public override bool DieMeetsReqs(Die die)
+	public override bool DieMeetsReq(Die d)
 		=> true;
 
 	public override void UpdateGame(Root root)
@@ -16,7 +16,7 @@ public partial class CardHeart : ICard
 			.Text
 			.ToInt();
 
-		foreach (Die d in LogicCard.GetDice(this))
+		foreach (Die d in GetDice())
 		{
 			res += LogicDice.GetDieValue(d);
 		}
@@ -29,6 +29,6 @@ public partial class CardHeart : ICard
 
 		var heart = root.GetNode<Label>("ResHeart/Label");
 		heart.Text = res.ToString();
-		LogicCard.RemoveAllDice(this);
+		RemoveAllDice();
 	}
 }

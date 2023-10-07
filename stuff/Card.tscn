@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cubstg0pwomrd"]
+[gd_scene load_steps=2 format=3 uid="uid://q1jusxjg5sw2"]
 
-[ext_resource type="Script" path="res://code/model/cards/CardSowAndSell.cs" id="1_1p8n1"]
-[ext_resource type="PackedScene" uid="uid://dih24uqp66ped" path="res://stuff/CardWithDice.tscn" id="1_s2g2q"]
+[ext_resource type="Script" path="res://code/model/Card.cs" id="1_q2vtv"]
 
-[node name="Control" type="Control" groups=["Cards"]]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,18 +11,39 @@ offset_right = -1062.0
 offset_bottom = -533.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1p8n1")
+script = ExtResource("1_q2vtv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 90.0
 offset_bottom = 115.0
-color = Color(0.458824, 0.615686, 0.356863, 1)
+color = Color(0.286275, 0.384314, 0.431373, 1)
 
-[node name="CardWithDice" parent="." instance=ExtResource("1_s2g2q")]
-layout_mode = 1
-offset_right = -90.0
-offset_bottom = -115.0
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 73.0
+offset_right = 90.0
+offset_bottom = 115.0
+color = Color(0, 0, 0, 0.1)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_top = 73.0
+offset_right = 90.0
+offset_bottom = 115.0
+theme_override_constants/h_separation = 22
+theme_override_constants/v_separation = 21
+columns = 4
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 17.0
+offset_top = 85.0
+offset_right = 71.0
+offset_bottom = 115.0
+theme_override_font_sizes/font_size = 12
+text = "Add Die"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -31,7 +51,6 @@ offset_right = 90.0
 offset_bottom = 25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
-text = "Sow and Sell"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -42,12 +61,11 @@ offset_right = 90.0
 offset_bottom = 52.0
 theme_override_colors/font_color = Color(0.243137, 0.243137, 0.243137, 1)
 theme_override_font_sizes/font_size = 8
-text = "d[4+]: +1 Progress
-3 Progress: +12🪙"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = 53.0
@@ -60,6 +78,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Label4" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 45.0
 offset_top = 53.0

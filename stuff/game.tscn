@@ -1,12 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfrlgcqejgv4a"]
+[gd_scene load_steps=6 format=3 uid="uid://dfrlgcqejgv4a"]
 
 [ext_resource type="Script" path="res://code/game.cs" id="1_m1spv"]
 [ext_resource type="PackedScene" uid="uid://dcnauyqqglbyh" path="res://stuff/Dicetray.tscn" id="1_ryux4"]
 [ext_resource type="PackedScene" uid="uid://bicywlfvx05ge" path="res://stuff/ResGold.tscn" id="4_31xa6"]
-[ext_resource type="PackedScene" uid="uid://ce6e4w3ql73xp" path="res://stuff/CardHeart.tscn" id="4_jt17l"]
 [ext_resource type="PackedScene" uid="uid://bqrh4nf273hlq" path="res://stuff/ResHeart.tscn" id="5_rjiuy"]
-[ext_resource type="PackedScene" uid="uid://cubstg0pwomrd" path="res://stuff/CardSowAndSell.tscn" id="6_jkrj3"]
-[ext_resource type="PackedScene" uid="uid://c1xjq8bavktvp" path="res://stuff/CardTaxation.tscn" id="7_5w2xe"]
 [ext_resource type="PackedScene" uid="uid://s5ytjd4vxq3a" path="res://stuff/PopGameOver.tscn" id="8_ris4b"]
 
 [node name="Control" type="Control"]
@@ -20,68 +17,47 @@ script = ExtResource("1_m1spv")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 489.0
-offset_top = 593.0
-offset_right = 570.0
-offset_bottom = 624.0
+offset_left = 451.0
+offset_top = 594.0
+offset_right = 532.0
+offset_bottom = 625.0
 text = "Play turn"
 
 [node name="ResGold" parent="." instance=ExtResource("4_31xa6")]
 layout_mode = 1
-offset_left = 304.0
-offset_top = 431.0
-offset_right = -788.0
-offset_bottom = -187.0
+offset_left = 266.0
+offset_top = 432.0
+offset_right = -826.0
+offset_bottom = -186.0
 
 [node name="ResHeart" parent="." instance=ExtResource("5_rjiuy")]
 layout_mode = 1
-offset_left = 304.0
-offset_top = 461.0
-offset_right = -788.0
-offset_bottom = -157.0
-
-[node name="CardHeart" parent="." instance=ExtResource("4_jt17l")]
-layout_mode = 1
-offset_left = 693.0
-offset_top = 426.0
-offset_right = -369.0
-offset_bottom = -107.0
-
-[node name="CardSowAndSell" parent="." instance=ExtResource("6_jkrj3")]
-layout_mode = 1
-offset_left = 793.0
-offset_top = 426.0
-offset_right = -269.0
-offset_bottom = -107.0
-
-[node name="CardTaxation" parent="." instance=ExtResource("7_5w2xe")]
-layout_mode = 1
-offset_left = 892.0
-offset_top = 427.0
-offset_right = -170.0
-offset_bottom = -106.0
+offset_left = 266.0
+offset_top = 462.0
+offset_right = -826.0
+offset_bottom = -156.0
 
 [node name="Dicetray" parent="." instance=ExtResource("1_ryux4")]
 layout_mode = 1
-offset_left = 393.0
-offset_top = 431.0
-offset_right = -471.0
-offset_bottom = -60.0
+offset_left = 355.0
+offset_top = 432.0
+offset_right = -509.0
+offset_bottom = -59.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 304.0
-offset_top = 403.0
-offset_right = 344.0
-offset_bottom = 429.0
+offset_left = 266.0
+offset_top = 404.0
+offset_right = 306.0
+offset_bottom = 430.0
 text = "Turn"
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 343.0
-offset_top = 403.0
-offset_right = 449.0
-offset_bottom = 429.0
+offset_left = 305.0
+offset_top = 404.0
+offset_right = 411.0
+offset_bottom = 430.0
 text = "1"
 
 [node name="PopGameOver" parent="." instance=ExtResource("8_ris4b")]
@@ -118,3 +94,13 @@ offset_bottom = 421.0
 theme_override_constants/h_separation = 122
 theme_override_constants/v_separation = 85
 columns = 3
+
+[node name="Cards" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 663.0
+offset_top = 396.0
+offset_right = 1143.0
+offset_bottom = 635.0
+theme_override_constants/h_separation = 92
+theme_override_constants/v_separation = 117
+columns = 5
