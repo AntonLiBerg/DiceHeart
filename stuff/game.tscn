@@ -70,10 +70,10 @@ offset_bottom = -172.0
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 0
-offset_left = 68.0
-offset_top = 393.0
-offset_right = 265.0
-offset_bottom = 627.0
+offset_left = 4.0
+offset_top = 15.0
+offset_right = 201.0
+offset_bottom = 249.0
 text = "Keep the heart beating!
 End every turn with 
 atleast 1 ♥️
@@ -85,12 +85,19 @@ decreased by 1"
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 695.0
+offset_top = 34.0
+offset_right = 1066.0
+offset_bottom = 374.0
+color = Color(0, 0, 0, 0.1)
+
 [node name="Changes" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 692.0
-offset_top = 57.0
-offset_right = 1063.0
-offset_bottom = 421.0
+offset_left = 695.0
+offset_top = 34.0
+offset_right = 1066.0
+offset_bottom = 374.0
 theme_override_constants/h_separation = 122
 theme_override_constants/v_separation = 85
 columns = 3
@@ -104,3 +111,14 @@ offset_bottom = 635.0
 theme_override_constants/h_separation = 92
 theme_override_constants/v_separation = 117
 columns = 5
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 836.0
+offset_top = 4.0
+offset_right = 909.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 23
+text = "Events"
+horizontal_alignment = 1
+vertical_alignment = 1
