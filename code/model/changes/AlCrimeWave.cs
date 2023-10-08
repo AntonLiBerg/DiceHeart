@@ -1,12 +1,12 @@
 using System;
 using Godot;
 
-public class AlCrimeWave : IAilment
+public class AlCrimeWave : IAilmentText
 {
     public override string Title { get; protected set; } = "Crime Wave";
-    public override string EachTurnLabel { get; protected set; } = "Risk for structural problems";
-    public override string PriceToEndLabel { get; protected set; } = "have 2🛡️";
-    public override bool ShowToEndNodes { get; protected set; } = false;
+    public override string EachTurnLabel { get; protected set; } = "Risk for structural problems. Have 2🛡️ to end";
+    public override string PriceToEndLabel { get; protected set; }
+    public override bool ShowToEndNodes { get; protected set; }
     public override int PriceToEnd { get; protected set; }
     public override Color Color { get; protected set; } = Colors.DarkRed;
 
