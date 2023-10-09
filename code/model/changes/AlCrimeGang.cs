@@ -1,6 +1,6 @@
 using Godot;
 
-public class AlCrimeGang : IAilment
+public class AlCrimeGang : IAilmentText
 {
     public override string Title { get; protected set; } = "Crime Gang";
     public override string EachTurnLabel { get; protected set; } = "-2🪙 -1🛡️";
