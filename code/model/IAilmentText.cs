@@ -15,4 +15,9 @@ public abstract class IAilmentText : IChange
 
         Change = c;
     }
+    
+    public override bool TryPay(Root root)
+    {
+        throw new System.NotImplementedException();
+    }
 }

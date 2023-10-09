@@ -33,4 +33,20 @@ public static class LogicDiceTray
             });
         return (Die)res;
     }
+    public static int GetNrOfDice(Root root)
+        => root.GetNode<Control>("Dicetray/GridContainer")
+            .GetChildren()
+            .Count();
+
+    public static void RemoveDice(int nr, Root root)
+    {
+        for (int i = 0; i < nr; i++)
+        {
+            if (GetNrOfDice(root) == 0)
+                return;
+            root.GetNode<Control>("Dicetray/GridContainer")
+                .GetChildren()
+                .RemoveAt(0);
+        }
+    }
 }

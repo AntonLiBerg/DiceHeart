@@ -193,10 +193,12 @@ public class Root
         t++;
         GetNode<Label>("Label2").Text = t.ToString();
         
-        var r = new Random().Next(1, 6);
-        if (r == 1)
+        var r = new Random().Next(1, 12);
+        if (r == 1 || r == 2)
             AddNewChange(new AlPoorHarvest());
-        else if (r == 2)
+        else if (r == 2 || r == 3)
             AddNewChange(new AlCrimeWave());
+        else if (r == 4)
+            AddNewChange(new AlCorruption());
     }
 }
