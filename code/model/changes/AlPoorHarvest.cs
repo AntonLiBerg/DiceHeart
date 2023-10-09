@@ -17,7 +17,6 @@ public class AlPoorHarvest : IAilment
 
     public override void UpdateGame(Root root)
     {
-        var amountNode = root.GetNode<Label>("ResGold/Label");
-        amountNode.Text = (amountNode.Text.ToInt() - 1).ToString();
+        LogicRes.Update(-1,root.GetNode<Control>("ResGold"));
     }
 }

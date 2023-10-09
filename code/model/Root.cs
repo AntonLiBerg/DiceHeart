@@ -36,6 +36,9 @@ public class Root
             var ci = new CrdInvest();
             ci.Make(this);
             Cards.Add(ci);
+            var cp = new CrdPower();
+            cp.Make(this);
+            Cards.Add(cp);
 
             PlayerState = PlayerState.None;
             var c = new BnIncomeTax();
@@ -175,10 +178,14 @@ public class Root
 
 
         //2. Alla event effekter
-        foreach (IChange c in Changes)
+        for (int i = Changes.Count - 1; i >= 0; i--)
+        {
+            IChange c = Changes[i];
             c.UpdateGame(this);
+        }
 
         //Upkeep och turn
+
         var h = GetNode<Label>("ResHeart/Label").Text.ToInt();
         h--;
         GetNode<Label>("ResHeart/Label").Text = h.ToString();

@@ -19,8 +19,7 @@ public class CrdInvest : ICard
         if (Progress >= 2)
         {
             Progress = 0;
-            var gold = root.GetNode<Label>("ResGold/Label");
-            gold.Text = (gold.Text.ToInt() + 10).ToString();
+            LogicRes.Update(10, root.GetNode<Control>("ResGold"));
         }
 
         Card.GetNode<Label>("Label4").Text = Progress.ToString();

@@ -12,7 +12,14 @@ public class AlCrimeGang : IAilment
 
     public override void UpdateGame(Root root)
     {
-        var amountNode = root.GetNode<Label>("ResGold/Label");
-        amountNode.Text = (amountNode.Text.ToInt() - 2).ToString();
+        var p = root.GetNode<Label>("ResPower/Label");
+        if (p.Text.ToInt() >= 5)
+        {
+            RemoveThisChange(root);
+            return;
+        }
+
+        LogicRes.Update(-2,root.GetNode<Control>("ResGold"));
+        LogicRes.Update(-1,root.GetNode<Control>("ResPower"));
     }
 }

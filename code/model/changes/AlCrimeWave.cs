@@ -14,6 +14,11 @@ public class AlCrimeWave : IAilmentText
 
     public override void UpdateGame(Root root)
     {
+        if (root.GetNode<Label>("ResPower/Label").Text.ToInt() >= 2)
+        {
+            RemoveThisChange(root);
+            return;
+        }
         if (new Random().Next(1, 3) != 1)
             return;
 

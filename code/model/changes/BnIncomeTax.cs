@@ -17,7 +17,6 @@ public class BnIncomeTax : IBoon
 
     public override void UpdateGame(Root root)
     {
-        var gold = root.GetNode<Label>("ResGold/Label");
-        gold.Text = (gold.Text.ToInt() + 1).ToString();
+        LogicRes.Update(1,root.GetNode<Control>("ResGold"));
     }
 }
