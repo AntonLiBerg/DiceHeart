@@ -46,7 +46,8 @@ public static class LogicDiceTray
                 return;
             root.GetNode<Control>("Dicetray/GridContainer")
                 .GetChildren()
-                .RemoveAt(0);
+                .Last()
+                .QueueFree();
         }
     }
 }

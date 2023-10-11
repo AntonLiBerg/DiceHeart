@@ -89,12 +89,8 @@ public class Root
 
     public void ShowGameOver()
     {
-        var n = GetNode<Control>("PopGameOver");
-        n.Visible = true;
-        n.GetNode<Button>("Button").Pressed += () =>
-        {
-            GetTree().ReloadCurrentScene();
-        };
+        var p = new PopGameOver();
+        p.Make(this);
     }
 
     public T GetNode<T>(string path) where T : Control
@@ -192,8 +188,8 @@ public class Root
         var t = GetNode<Label>("Label2").Text.ToInt();
         t++;
         GetNode<Label>("Label2").Text = t.ToString();
-        
-        var r = new Random().Next(1, 12);
+
+        var r = new Random().Next(1, 8 + Changes.Count * 2);
         if (r == 1 || r == 2)
             AddNewChange(new AlPoorHarvest());
         else if (r == 2 || r == 3)

@@ -33,7 +33,7 @@ offset_top = 103.0
 offset_right = 132.0
 offset_bottom = 157.0
 text = "1🪙
-Roll dice"
+Roll 🎲"
 
 [node name="ButtonAdd" type="Button" parent="."]
 layout_mode = 0
@@ -42,4 +42,4 @@ offset_top = 103.0
 offset_right = 216.0
 offset_bottom = 157.0
 text = "2🪙 
-Add 1 die"
+Add 1 🎲"
