@@ -69,20 +69,20 @@ text = "1"
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 695.0
+offset_left = 832.0
 offset_top = 34.0
 offset_right = 1066.0
-offset_bottom = 374.0
+offset_bottom = 277.0
 color = Color(0, 0, 0, 0.1)
 
 [node name="Changes" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 695.0
-offset_top = 34.0
+offset_left = 835.0
+offset_top = 36.0
 offset_right = 1066.0
-offset_bottom = 374.0
-theme_override_constants/h_separation = 122
-theme_override_constants/v_separation = 85
+offset_bottom = 279.0
+theme_override_constants/h_separation = 76
+theme_override_constants/v_separation = 30
 columns = 3
 
 [node name="Cards" type="GridContainer" parent="."]
@@ -97,9 +97,9 @@ columns = 5
 
 [node name="Label4" type="Label" parent="."]
 layout_mode = 0
-offset_left = 836.0
+offset_left = 910.0
 offset_top = 4.0
-offset_right = 909.0
+offset_right = 983.0
 offset_bottom = 39.0
 theme_override_font_sizes/font_size = 23
 text = "Events"

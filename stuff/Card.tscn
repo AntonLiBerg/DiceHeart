@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://q1jusxjg5sw2"]
 
-[ext_resource type="Script" path="res://code/model/Card.cs" id="1_q2vtv"]
+[ext_resource type="Script" path="res://code/model/nodes/Card.cs" id="1_q2vtv"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

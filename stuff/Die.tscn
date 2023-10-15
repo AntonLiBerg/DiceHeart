@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkxpkajpapoge"]
 
-[ext_resource type="Script" path="res://code/model/Die.cs" id="1_mvaf8"]
+[ext_resource type="Script" path="res://code/model/nodes/Die.cs" id="1_mvaf8"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

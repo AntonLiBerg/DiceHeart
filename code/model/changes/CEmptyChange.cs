@@ -1,11 +1,10 @@
 using Godot;
 
-public class CEmptyChange : IAilment
+public class CEmptyChange : IChange
 {
     public override string Title { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
-    public override string EachTurnLabel { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
-    public override string PriceToEndLabel { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
-    public override int PriceToEnd { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
+    public override string Effect { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
+    public override string Description { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
     public override Color Color { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
 
     public override bool TryPay(Root root)

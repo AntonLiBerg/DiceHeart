@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cyygn4s3i54kj"]
 
-[ext_resource type="Script" path="res://code/model/Boon.cs" id="1_2t86y"]
+[ext_resource type="Script" path="res://code/model/nodes/Boon.cs" id="1_2t86y"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

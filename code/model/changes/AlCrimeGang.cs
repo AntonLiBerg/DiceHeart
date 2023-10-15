@@ -1,12 +1,15 @@
 using Godot;
 
-public class AlCrimeGang : IAilmentText
+public class AlCrimeGang : IAilment
 {
     public override string Title { get; protected set; } = "Crime Gang";
-    public override string EachTurnLabel { get; protected set; } = "-2🪙\nhave 5🛡️ to end";
-    public override string PriceToEndLabel { get; protected set; }
-    public override int PriceToEnd { get; protected set; }
-    public override Color Color { get; protected set; } = Colors.DarkRed;
+    public override string Effect { get; protected set; } = "-2🪙. Have 5🛡️ to end";
+    public override string Description { get => throw new System.NotImplementedException(); protected set => throw new System.NotImplementedException(); }
+
+    public override bool TryPay(Root root)
+    {
+        throw new System.NotImplementedException();
+    }
 
     public override void UpdateGame(Root root)
     {
