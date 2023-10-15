@@ -44,6 +44,8 @@ public class Root
             var c = new BnIncomeTax();
             c.MakeChange(this);
             Changes.Add(c);
+            new PopStart()
+                .Make(this);
         }
         else if (PlayerState == PlayerState.GameOverStart)
         {

@@ -6,7 +6,7 @@ public abstract class IPopup
     public abstract string Title { get; protected set; }
     public abstract string Description { get; protected set; }
     public abstract void SetButtons(Root root);
-    public void Remove(){
+    public void ClosePopup(){
         Popup.QueueFree();
     }
     public void Make(Root root)

@@ -67,23 +67,6 @@ offset_right = 411.0
 offset_bottom = 430.0
 text = "1"
 
-[node name="Label3" type="Label" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 15.0
-offset_right = 201.0
-offset_bottom = 249.0
-text = "Keep the heart beating!
-End every turn with 
-atleast 1 ♥️
-
-Every turn ♥️ is 
-decreased by 1
-
-Press 1-6 to select a 🎲 of that number"
-horizontal_alignment = 1
-autowrap_mode = 2
-
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 695.0

@@ -19,6 +19,16 @@ offset_right = 90.0
 offset_bottom = 115.0
 color = Color(0.286275, 0.384314, 0.431373, 1)
 
+[node name="Label5" type="Label" parent="."]
+offset_top = 83.0
+offset_right = 90.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "🎲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
 offset_top = 73.0
